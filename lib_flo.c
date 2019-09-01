@@ -1,4 +1,4 @@
-#include "sensor-lib-flo/lib_flo.h"
+#include "lib_flo.h"
 #include "lib_flo_config.h"
 
 #define MAGIC_NUMBER_DEFAULT 0x67 // 8 bit random number prefered to be unique, for integrity check of params
