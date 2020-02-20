@@ -8,6 +8,9 @@ ISR_INTERRUPT(pulses_counter_callback){ // external interrupt service routine
   pulses_counter ++;
 }
 
+static void start_pulses_interrupt(){
+}
+
 static void stop_pulses_interrupt(){
 }
 
