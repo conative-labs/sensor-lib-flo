@@ -1,5 +1,10 @@
 #include "lib_flo.h"
+
+#ifdef TEST
+#include "lib_flo_config_test.h"
+#else
 #include "lib_flo_config.h"
+#endif
 
 #define MAGIC_NUMBER_DEFAULT 0x67 // 8 bit random number prefered to be unique, for integrity check of params
 #define FLOW_FACTOR_DEFAULT 4.5
@@ -29,9 +34,11 @@ static lib_flo_flow_t compute_flow_rate(mili_time_t start_time, mili_time_t end_
 void lib_flo_cmd(lib_flo_cmd_t cmd, void *buffer) {
   lib_flo_flow_t flo_value;
   mili_time_t start,end; 
-	switch(cmd) {
-  case flo_read:
+  switch(cmd) {
+  case flo_read: 
+#ifndef TEST // to mock pulses
     pulses_counter = 0;
+#endif
     start_pulses_interrupt();
     start = get_current_time_mili();
     mili_delay(1000);
